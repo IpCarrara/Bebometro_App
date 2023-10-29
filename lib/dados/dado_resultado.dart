@@ -41,9 +41,4 @@ final resultados = [
     'Você está tão sóbrio que até os semáforos invejam sua clareza! Sua mente afiada é a chave para uma viagem segura e divertida. Enquanto outros estão buscando o próximo copo, você está pronto para conquistar quilômetros de diversão com responsabilidade. Lembre-se, dirigir sóbrio é mais do que uma escolha inteligente, é uma atitude de campeão!',
     'assets/Resultado_img/Fases0.png',
   ),
-  ResultadoModelo(
-    'ERRO',
-    'Entre um número valido.                                      ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',
-    'assets/Resultado_img/Fases8.png',
-  )
 ];

@@ -1,5 +1,7 @@
 import 'package:bebometro/dados/dado_resultado.dart';
 import 'package:bebometro/modelo/resultado_modelo.dart';
+import 'package:bebometro/tela_erro.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:bebometro/tela_resultado.dart';
@@ -20,67 +22,103 @@ class _TelaQuantidadeState extends State<TelaQuantidade> {
   int? numeroDoses;
 
   void salvar() {
-    setState(() {
-      numeroDoses = int.tryParse(_controller.text) ?? 0;
+    setState(
+      () {
+        //numeroDoses = int.tryParse(_controller.text) ?? 0;
 
-      ResultadoModelo? resultado;
-      if (numeroDoses == 0) {
-        resultado = resultados[7];
-      }
-      if (numeroDoses == 1) {
-        resultado = resultados[0];
-      }
-      if (numeroDoses == 2) {
-        resultado = resultados[1];
-      }
-      if (numeroDoses == 3) {
-        if (widget.bebidaSelecionada == 'Cerveja') {
-          resultado = resultados[1];
-        } else {
-          resultado = resultados[2];
-        }
-      }
-      if (numeroDoses == 4) {
-        if (widget.bebidaSelecionada == 'Cerveja') {
-          resultado = resultados[2];
-        } else {
-          resultado = resultados[3];
-        }
-      }
-      if (numeroDoses == 5) {
-        if (widget.bebidaSelecionada == 'Cerveja') {
-          resultado = resultados[3];
-        } else {
-          resultado = resultados[4];
-        }
-      }
-      if (numeroDoses == 6) {
-        if (widget.bebidaSelecionada == 'Cerveja') {
-          resultado = resultados[4];
-        } else {
-          resultado = resultados[5];
-        }
-      }
-      if (numeroDoses == 7) {
-        if (widget.bebidaSelecionada == 'Cerveja') {
-          resultado = resultados[5];
-        } else {
-          resultado = resultados[6];
-        }
-      }
-      if (numeroDoses! > 7) {
-        resultado = resultados[6];
-      } else {
-        resultado = resultados[8];
-      }
+        String inputText = _controller.text;
 
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => TelaResultado(resultado: resultado!),
-        ),
-      );
-    });
+        if (inputText.isEmpty) {
+          // A entrada está vazia, você pode tratar isso aqui, por exemplo, mostrar uma mensagem de erro
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TelaErro(),
+            ),
+          );
+        } else {
+          int? parsedInt = int.tryParse(inputText);
+          if (parsedInt != null) {
+            // A conversão foi bem-sucedida, parsedInt contém o valor inteiro
+            numeroDoses = parsedInt;
+
+            ResultadoModelo? resultado;
+
+            if (numeroDoses! >= 0) {
+              if (numeroDoses == 0) {
+                resultado = resultados[7];
+              }
+              if (numeroDoses == 1) {
+                resultado = resultados[0];
+              }
+              if (numeroDoses == 2) {
+                resultado = resultados[1];
+              }
+              if (numeroDoses == 3) {
+                if (widget.bebidaSelecionada == 'Cerveja') {
+                  resultado = resultados[1];
+                } else {
+                  resultado = resultados[2];
+                }
+              }
+              if (numeroDoses == 4) {
+                if (widget.bebidaSelecionada == 'Cerveja') {
+                  resultado = resultados[2];
+                } else {
+                  resultado = resultados[3];
+                }
+              }
+              if (numeroDoses == 5) {
+                if (widget.bebidaSelecionada == 'Cerveja') {
+                  resultado = resultados[3];
+                } else {
+                  resultado = resultados[4];
+                }
+              }
+              if (numeroDoses == 6) {
+                if (widget.bebidaSelecionada == 'Cerveja') {
+                  resultado = resultados[4];
+                } else {
+                  resultado = resultados[5];
+                }
+              }
+              if (numeroDoses == 7) {
+                if (widget.bebidaSelecionada == 'Cerveja') {
+                  resultado = resultados[5];
+                } else {
+                  resultado = resultados[6];
+                }
+              }
+              if (numeroDoses! > 7) {
+                resultado = resultados[6];
+              }
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TelaResultado(resultado: resultado!),
+                ),
+              );
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const TelaErro(),
+                ),
+              );
+            }
+          } else {
+            // A conversão falhou, você pode tratar isso aqui, por exemplo, mostrar uma mensagem de erro
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const TelaErro(),
+              ),
+            );
+          }
+        }
+      },
+    );
   }
 
   @override
