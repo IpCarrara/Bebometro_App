@@ -25,38 +25,38 @@ class _BebometroState extends State<Bebometro> {
   String tamanhoCopo = '';
 
   void trocarTela(Key botaoKeys) {
-    setState(() {
-      final int chaveBotao = (botaoKeys as ValueKey<int>).value;
-      switch (chaveBotao) {
-        case 1:
-          telaAtiva = 'quantidade-bebidas';
-          bebidaSelecionada = 'Cerveja';
-          tamanhoCopo = '1 copo = 350ml';
-          break;
-        case 2:
-          imgBebidas = Image.asset('assets/Tela_inicial_img/Vinho.png');
-          telaAtiva = 'quantidade-bebidas';
-          bebidaSelecionada = 'Vinho';
-          tamanhoCopo = '1 cálice = 80ml';
-          break;
-        case 3:
-          imgBebidas = Image.asset('assets/Tela_inicial_img/Vodka1.png');
-          telaAtiva = 'quantidade-bebidas';
-          bebidaSelecionada = 'Vodka';
-          tamanhoCopo = '1 dose = 50ml';
-          break;
-        case 4:
-          imgBebidas = Image.asset('assets/Tela_inicial_img/Wisky1.png');
-          telaAtiva = 'quantidade-bebidas';
-          bebidaSelecionada = 'Wisky';
-          tamanhoCopo = '1 dose = 50ml';
-          break;
-        default:
-          const Text('Erro 404');
-      }
-      //final int chaveBotao = (botaoKeys as ValueKey<int>).value;
-      //print('Valor da chave: $tamanhoCopo');
-    });
+    setState(
+      () {
+        final int chaveBotao = (botaoKeys as ValueKey<int>).value;
+        switch (chaveBotao) {
+          case 1:
+            telaAtiva = 'quantidade-bebidas';
+            bebidaSelecionada = 'Cerveja';
+            tamanhoCopo = '1 copo = 350ml';
+            break;
+          case 2:
+            imgBebidas = Image.asset('assets/Tela_inicial_img/Vinho.png');
+            telaAtiva = 'quantidade-bebidas';
+            bebidaSelecionada = 'Vinho';
+            tamanhoCopo = '1 cálice = 80ml';
+            break;
+          case 3:
+            imgBebidas = Image.asset('assets/Tela_inicial_img/Vodka1.png');
+            telaAtiva = 'quantidade-bebidas';
+            bebidaSelecionada = 'Vodka';
+            tamanhoCopo = '1 dose = 50ml';
+            break;
+          case 4:
+            imgBebidas = Image.asset('assets/Tela_inicial_img/Wisky1.png');
+            telaAtiva = 'quantidade-bebidas';
+            bebidaSelecionada = 'Wisky';
+            tamanhoCopo = '1 dose = 50ml';
+            break;
+          default:
+            const Text('Erro 404');
+        }
+      },
+    );
   }
 
   @override

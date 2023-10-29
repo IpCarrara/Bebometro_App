@@ -16,7 +16,6 @@ class _TelaResultadoState extends State<TelaResultado> {
     return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
-          //expandedHeight: 66.0,
           pinned: true,
           backgroundColor: Colors.transparent,
           flexibleSpace: Stack(

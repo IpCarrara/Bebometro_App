@@ -24,12 +24,9 @@ class _TelaQuantidadeState extends State<TelaQuantidade> {
   void salvar() {
     setState(
       () {
-        //numeroDoses = int.tryParse(_controller.text) ?? 0;
-
         String inputText = _controller.text;
 
         if (inputText.isEmpty) {
-          // A entrada está vazia, você pode tratar isso aqui, por exemplo, mostrar uma mensagem de erro
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -39,7 +36,6 @@ class _TelaQuantidadeState extends State<TelaQuantidade> {
         } else {
           int? parsedInt = int.tryParse(inputText);
           if (parsedInt != null) {
-            // A conversão foi bem-sucedida, parsedInt contém o valor inteiro
             numeroDoses = parsedInt;
 
             ResultadoModelo? resultado;
@@ -108,7 +104,6 @@ class _TelaQuantidadeState extends State<TelaQuantidade> {
               );
             }
           } else {
-            // A conversão falhou, você pode tratar isso aqui, por exemplo, mostrar uma mensagem de erro
             Navigator.push(
               context,
               MaterialPageRoute(
