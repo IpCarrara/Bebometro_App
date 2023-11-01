@@ -21,6 +21,12 @@ class _TelaQuantidadeState extends State<TelaQuantidade> {
   final TextEditingController _controller = TextEditingController();
   int? numeroDoses;
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   void salvar() {
     setState(
       () {
